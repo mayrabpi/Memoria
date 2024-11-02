@@ -9,3 +9,8 @@ class Start:
         os.system('cls'
                   if os.name == 'nt'
                   else 'clear')
+        
+    def pedir_carta(numero):
+        fila=int(input(f"\nIngrese fila de la {numero} carta:"))
+        col= int(input(f"Ingrese columna de la {numero} carta:"))
+        return fila,col
