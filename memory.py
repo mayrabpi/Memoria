@@ -2,7 +2,7 @@ import random
 
 def crear_tablero(filas, columnas):
     # Lista de símbolos que usaremos (letras)
-    simbolos = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O']
+    simbolos = ["🍄 ", "☂️ ", "🌦️ ", "⭐ ", "🌜", "🌞 ", "☁️ ", "❄️ ", "🔥 ", "⚡ ", "🏝️ ", "🌋 ", "🪐 ", "⛵ ", "🛤️ "]
     # Tomamos solo los símbolos necesarios y los duplicamos para hacer pares
     simbolos = simbolos[:(filas * columnas) // 2] * 2
     # Mezclamos los símbolos
@@ -40,7 +40,7 @@ def mostrar_tablero_visible(tablero):
     print("  ", end="")
     # Mostrar números de columnas
     for j in range(len(tablero[0])):
-        print(f" {j}", end="")
+        print(f" {j}  ", end="")
     print()
     
     # Mostrar filas con símbolos
