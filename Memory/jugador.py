@@ -14,7 +14,7 @@ class Jugador:
     def sumar_puntos(self):
         self.puntos+=1
 
-    """Retorna la puntuación actual del jugador, return número de puntosdel jufador """    
+    """Retorna la puntuación actual del jugador, return número de puntos del jufador """    
     def obtener_puntos(self):
         return self.puntos
     
