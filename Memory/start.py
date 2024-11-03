@@ -10,10 +10,28 @@ class Start:
         print("Tamaño mínimo: 2x2")
         print("Tamaño máximo: 6x5")
         print()
-      
-        filas = int(input("Ingrese número de filas (2-6): "))
-        columnas = int(input("Ingrese número de columnas (2-5): "))
-        return filas, columnas
+        while True:
+             try:
+                 filas = int(input("Ingrese número de filas (2-6): "))
+                 columnas = int(input("Ingrese número de columnas (2-5): "))
+
+                 if filas<2 or filas>6 or columnas<2 or columnas>5:
+                      print("\n¡Error! Las dimensiones deben estar entre 2x2 y 6x5")
+                      input("Presione Enter para intentar de nuevo...")
+                      
+                      print("\n----------Bienvenido al Juego de Memoria------------")
+                      print()
+                      print("Tamaño mínimo: 2x2")
+                      print("Tamaño máximo: 6x5")
+                      print()
+                      continue
+               
+
+                 return filas, columnas
+             except ValueError:
+              print("")
+              
+           
 
    """Limpia la pantalla de la consola"""
    def limpiar_pantalla():
