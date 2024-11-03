@@ -41,15 +41,15 @@ class Tablero:
      """Muestra el estado actual del tablero en la consala."""
      def mostrar(self):
          #Muestra los números de la columnas
-        print("  ", end="")
+        print("   ", end="")
         for j in range(self.columnas):
-            print(f" {j}", end="")
+            print(f" {j}", end=" ")
         print()
         #Muestra las filas con sus números
         for i in range(self.filas):
-            print(f"{i}", end=" ")
+            print(f" {i}", end=" ")
             for j in range(self.columnas):
-                print(f" {self.tablero_visible[i][j]}", end="")
+                print(f" {self.tablero_visible[i][j]}", end=" ")
             print()
 
 
