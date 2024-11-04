@@ -1,4 +1,5 @@
 import os
+from tablero import Tablero
 """Clase que maneja la configuración inicial y utilidades del juego"""
 class Start:
 
@@ -20,7 +21,6 @@ class Start:
                if filas<2 or filas>6 or columnas<2 or columnas>5:
                    print("\n¡Error! Las dimensiones deben estar entre 2x2 y 6x5")
                else:
-                   
                    total_casillas = filas*columnas
                    if total_casillas%2 !=0:
                        print("\n¡Error! El número total de casillas debe de ser para para formar parejas ")
@@ -31,6 +31,8 @@ class Start:
 
            input("Presione Enter para intentar de nuevo...")
            mostrar_menu
+      
+           
    
 
    """Limpia la pantalla de la consola"""
@@ -44,3 +46,8 @@ class Start:
         fila = int(input(f"Ingrese fila de la {numero} carta: "))
         col = int(input(f"Ingrese columna de la {numero} carta: "))
         return fila, col
+   
+   def obtener_nombres():
+       nombre1=input("Ingrese nombre del Jugador 1:")
+       nombre2=input("Ingrese nombre del jugador 2:")
+       return nombre1,nombre2
