@@ -65,10 +65,12 @@ class JuegoMemoria:
             while True:
               try:
                 fila1, col1 = Start.pedir_carta("primera")
-                if self.coordenda_valida(fila1,col1):
-                  break
+                if not self.coordenda_valida(fila1,col1):
+                    print("\nCoordenada inválida! Por favor, introduce una coordenada dentro del tablero ")
+                elif self.tablero.esta_revelada(fila1,col1):
+                    print("\n!Esta carta ya está revelada! Elige otra carta") 
                 else:
-                  print("\nCoordenada inválida! Por favor, introduce una coordenada dentro del tablero ")
+                    break    
               except ValueError:
                   print("\n¡Error! Por favor introduce números válidos")
               except Exception:
@@ -86,10 +88,12 @@ class JuegoMemoria:
             while True:
               try:
                 fila2, col2 = Start.pedir_carta("segunda")
-                if self.coordenda_valida(fila2,col2):
-                   break
+                if not self.coordenda_valida(fila2,col2):
+                    print("\nCoordenada inválida! Por favor, introduce una coordenada dentro del tablero ")
+                elif self.tablero.esta_revelada(fila2,col2):
+                    print("\n!Esta carta ya está revelada! Elige otra carta") 
                 else:
-                   print("\nCoordenada inválida! Por favor, introduce una coordenada dentro del tablero ")
+                   break
               except ValueError:
                    print("\n¡Error! Por favor introduce números válidos")
               except Exception:

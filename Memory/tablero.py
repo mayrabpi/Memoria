@@ -85,3 +85,12 @@ class Tablero:
         col2(int):columna de la segunda carta"""
      def son_iguales(self, fila1, col1, fila2, col2):
         return self.tablero[fila1][col1] == self.tablero[fila2][col2]
+     
+     def esta_revelada(self,fila,columna):
+         """Método que verifica si una celda especifica del tablero ya ha sido revelada
+            argumentos:fila(int),columna(int)
+            retorna bool"""
+         if self.tablero_visible[fila][columna] !="*":
+             return True
+         else:
+             return False
