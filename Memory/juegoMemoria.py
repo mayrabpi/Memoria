@@ -63,28 +63,41 @@ class JuegoMemoria:
             
             # Primera carta
             while True:
-              fila1, col1 = Start.pedir_carta("primera")
-              if self.coordenda_valida(fila1,col1):
+              try:
+                fila1, col1 = Start.pedir_carta("primera")
+                if self.coordenda_valida(fila1,col1):
                   break
-              else:
+                else:
                   print("\nCoordenada inválida! Por favor, introduce una coordenada dentro del tablero ")
-                  input("\nPresione Enter para continuar...")
-                  Start.limpiar_pantalla()
-                  self.tablero.mostrar()
+              except ValueError:
+                  print("\n¡Error! Por favor introduce números válidos")
+              except Exception:
+                  print("\n¡Error! Tecla inválida")
+
+              input("\nPresione Enter para continuar...")
+              Start.limpiar_pantalla()
+              self.tablero.mostrar()
+
             self.tablero.revelar_carta(fila1, col1)
             Start.limpiar_pantalla()
             self.tablero.mostrar()
             
             # Segunda carta
             while True:
-              fila2, col2 = Start.pedir_carta("segunda")
-              if self.coordenda_valida(fila2,col2):
-                  break
-              else:
+              try:
+                fila2, col2 = Start.pedir_carta("segunda")
+                if self.coordenda_valida(fila2,col2):
+                   break
+                else:
                    print("\nCoordenada inválida! Por favor, introduce una coordenada dentro del tablero ")
-                   input("\nPresione Enter para continuar...")
-                   Start.limpiar_pantalla()
-                   self.tablero.mostrar()
+              except ValueError:
+                   print("\n¡Error! Por favor introduce números válidos")
+              except Exception:
+                   print("\n¡Error! Tecla inválida")
+                   
+              input("\nPresione Enter para continuar...")
+              Start.limpiar_pantalla()
+              self.tablero.mostrar()
                   
             self.tablero.revelar_carta(fila2, col2) 
             Start.limpiar_pantalla()
