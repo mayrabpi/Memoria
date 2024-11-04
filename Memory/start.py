@@ -3,35 +3,35 @@ import os
 class Start:
 
    """Solicita al usuario las dimenciones del tablero
-      Retorna:tupla:Par de enteros(filas, columanas)"""
+      Retorna:tupla:Par de enteros(filas, columanas)"""         
    def obtener_dimensiones():
-        print("\n----------Bienvenido al Juego de Memoria------------")
-        print()
-        print("Tamaño mínimo: 2x2")
-        print("Tamaño máximo: 6x5")
-        print()
-        while True:
-             try:
-                 filas = int(input("Ingrese número de filas (2-6): "))
-                 columnas = int(input("Ingrese número de columnas (2-5): "))
+       def mostrar_menu():
+           print("\n----------Bienvenido al Juego de Memoria------------")
+           print()
+           print("Tamaño mínimo: 2x2")
+           print("Tamaño máximo: 6x5")
+           print()
 
-                 if filas<2 or filas>6 or columnas<2 or columnas>5:
-                      print("\n¡Error! Las dimensiones deben estar entre 2x2 y 6x5")
-                      input("Presione Enter para intentar de nuevo...")
-                      
-                      print("\n----------Bienvenido al Juego de Memoria------------")
-                      print()
-                      print("Tamaño mínimo: 2x2")
-                      print("Tamaño máximo: 6x5")
-                      print()
-                      continue
-               
+       mostrar_menu()
+       while True:
+           try:
+               filas=int(input("Ingrese número de filas(2-6): "))
+               columnas = int(input("Ingrese número de columnas (2-5): "))
+               if filas<2 or filas>6 or columnas<2 or columnas>5:
+                   print("\n¡Error! Las dimensiones deben estar entre 2x2 y 6x5")
+               else:
+                   
+                   total_casillas = filas*columnas
+                   if total_casillas%2 !=0:
+                       print("\n¡Error! El número total de casillas debe de ser para para formar parejas ")
+                   else:
+                       return filas,columnas
+           except ValueError:
+               print("\n¡Error! Por favor ingrse números enteros validos")
 
-                 return filas, columnas
-             except ValueError:
-              print("")
-              
-           
+           input("Presione Enter para intentar de nuevo...")
+           mostrar_menu
+   
 
    """Limpia la pantalla de la consola"""
    def limpiar_pantalla():

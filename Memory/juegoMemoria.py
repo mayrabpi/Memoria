@@ -15,7 +15,11 @@ class JuegoMemoria:
 
     """Cambia el turno entre los jugadores"""
     def cambiar_turno(self):
-        self.turno_jugador = 2 if self.turno_jugador == 1 else 1
+        #self.turno_jugador = 2 if self.turno_jugador == 1 else 1
+        if self.turno_jugador==1:
+            self.turno_jugador=2
+        else:
+            self.turno_jugador=1
     
     """Obtiene el jugador que tiene el turno actual
        Retorna: Jugador: jugador actual"""
@@ -44,7 +48,10 @@ class JuegoMemoria:
     def coordenda_valida(self,fila,columna):
         """Verifica si una coordenda está dentro de los límetes del tablero
             retorna True si la coordenada es valida, False en caso contrario"""
-        return(0<=fila<self.tablero.filas) and (0<=columna<self.tablero.columnas)
+        if 0<=fila<self.tablero.filas and 0<=columna<self.tablero.columnas:
+            return True
+        else:
+            return False
     
     def jugar(self):
         """Método principal que ejecuta el bucle del juego.
@@ -60,7 +67,7 @@ class JuegoMemoria:
               if self.coordenda_valida(fila1,col1):
                   break
               else:
-                  print("\n1Coordenada inválida! Por favor, introduce una coordenada dentro del tablero ")
+                  print("\nCoordenada inválida! Por favor, introduce una coordenada dentro del tablero ")
                   input("\nPresione Enter para continuar...")
                   Start.limpiar_pantalla()
                   self.tablero.mostrar()
@@ -74,7 +81,7 @@ class JuegoMemoria:
               if self.coordenda_valida(fila2,col2):
                   break
               else:
-                   print("\n1Coordenada inválida! Por favor, introduce una coordenada dentro del tablero ")
+                   print("\nCoordenada inválida! Por favor, introduce una coordenada dentro del tablero ")
                    input("\nPresione Enter para continuar...")
                    Start.limpiar_pantalla()
                    self.tablero.mostrar()

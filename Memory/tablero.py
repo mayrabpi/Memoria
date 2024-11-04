@@ -35,7 +35,14 @@ class Tablero:
      """Crea el tablero que se muestra al jugador, inicialmente con los elementos ocultos
         Retorna: List: Matriz que representa el tablero visible con '*' en todas las posiciones"""    
      def _crear_tablero_visible(self):
-        return [['*' for j in range(self.columnas)] for i in range(self.filas)]
+        #return [['*' for j in range(self.columnas)] for i in range(self.filas)]
+        tablero=[]
+        for i in range(self.filas):
+            fila=[]
+            for j in range(self.columnas):
+                fila.append('*')
+            tablero.append(fila)
+        return tablero
      
 
      """Muestra el estado actual del tablero en la consala."""
@@ -62,7 +69,7 @@ class Tablero:
         self.tablero_visible[fila][columna] = self.tablero[fila][columna]
         return self.tablero[fila][columna]
      
-     """Oculta una carta en la posición especicada
+     """Oculta una carta en la posición especificada
         Argumentos:
         fila(int):Número de filas de la carta
         columna(int):Número de columnas de la carta"""   
