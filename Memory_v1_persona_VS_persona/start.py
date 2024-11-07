@@ -60,13 +60,16 @@ class Start:
       Return:Par de enteros(fila,columna)"""
    def pedir_carta(numero):
         print()
-        fila = int(input(f"Ingrese fila de la {numero} carta: "))
-        col = int(input(f"Ingrese columna de la {numero} carta: "))
+        fila = int(input(f"Ingrese fila de la {numero} carta: "))-1
+        col = int(input(f"Ingrese columna de la {numero} carta: "))-1
         return fila, col
    
+   '''Metodo que obtiene los nombres de los jugadores ''' 
    def obtener_nombres():
        nombre1=input("Ingrese nombre del Jugador 1:")
        nombre2=input("Ingrese nombre del jugador 2:")
        return nombre1,nombre2
+   
+   '''Metodo que obtiene el nombre del jugador cuando elige jugar con la máquina'''
    def obtener_nombre_jugador():
        return input("Ingrese su nombre:")

@@ -79,7 +79,7 @@ class JuegoMemoria:
        self.tablero.revelar_carta(fila1, col1)
        Start.limpiar_pantalla()
        self.tablero.mostrar()
-       print(f"\nLa máquina elige la posición [{fila1}, {col1}]")
+       print(f"\nLa máquina elige la posición [{fila1+1}, {col1+1}]")
        input("\nPresione Enter para continuar...")
         
         # Segunda carta
@@ -92,7 +92,8 @@ class JuegoMemoria:
        self.tablero.revelar_carta(fila2, col2)
        Start.limpiar_pantalla()
        self.tablero.mostrar()
-       print(f"\nLa máquina elige la posición [{fila2}, {col2}]")
+       print(f"\nLa máquina elige la posición [{fila2+1}, {col2+1}]")
+       input("\nPresione Enter para continuar...")
         #verificar si las cartas son iguales
        if self.tablero.son_iguales(fila1,col1,fila2,col2):
            print("\n¡La máquina encontró un par!")
