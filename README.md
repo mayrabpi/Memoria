@@ -24,4 +24,6 @@ la creación de bucles, el uso de listas y diccionarios, y la gestión de flujos
 que también pone a prueba la capacidad de los estudiantes para implementar lógica de
 juego y diseñar una interfaz funcional y clara. Los alumnos desarrollarán una versión
 funcional del juego por etapas.</p>
+<p>Algunos métodos del juego:</p>
+
 
