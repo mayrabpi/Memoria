@@ -65,6 +65,7 @@ class JuegoMemoria:
             return True
         else:
             return False
+    '''Método que '''    
     def turno_maquina(self):
        print("\nTurno de la máquina...")
        input("Presione Enter para continuar...")
