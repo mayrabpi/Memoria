@@ -6,4 +6,14 @@
 iguales, el jugador las retira del tablero y puede seguir jugando. Si las cartas no coinciden,
 se vuelven a colocar boca abajo y pasa el turno al siguiente jugador. El proceso se repite
 hasta que se descubren todas las parejas.</p>
+<p>Modos de juego: Aunque tradicionalmente el juego se juega entre dos o más personas, en
+esta implementación se incluyen más modalidades:</p>
+<p>1. Persona vs Persona: Dos jugadores compiten por encontrar el mayor número de
+parejas. Alternan turnos y el ganador es quien descubra más parejas.</p>
+<p>2. Persona vs Máquina: Un jugador humano compite contra una máquina. La máquina
+simula una inteligencia artificial básica, recordando las cartas que ha visto para
+maximizar sus posibilidades de éxito.</p>
+<p>2. Persona vs Máquina: Un jugador humano compite contra una máquina. La máquina
+simula una inteligencia artificial básica, recordando las cartas que ha visto para
+maximizar sus posibilidades de éxito.</p>
 
