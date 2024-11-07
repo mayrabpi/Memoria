@@ -1,15 +1,25 @@
 from jugador import Jugador
 from tablero import Tablero
 from start import Start
+import random
 """Clase que controla la lógica y el flujo del juego de memoria"""
 class JuegoMemoria:
     """Inicializa un nuevo juego, configurando jugadores y tablero"""
-    def __init__(self):
+    def __init__(self, modo_juego):
+        self.modo_juego=modo_juego
         filas, columnas = Start.obtener_dimensiones()
-        nombre1,nombre2=Start.obtener_nombres()
         self.tablero = Tablero(filas, columnas)
-        self.jugador1 = Jugador(1,nombre1)
-        self.jugador2 = Jugador(2,nombre2)
+        
+        if self.modo_juego==1:#jugador vs jugador
+            nombre1,nombre2=Start.obtener_nombres()
+            self.jugador1 = Jugador(1,nombre1)
+            self.jugador2 = Jugador(2,nombre2)
+        else: #jugador vs máquina
+            nombre=Start.obtener_nombre_jugador()
+            self.jugador1=Jugador(1,nombre)
+            self.jugador2=Jugador(2,"Máquina")
+
+
         self.total_pares = (filas * columnas) // 2
         self.pares_encontrados = 0
         self.turno_jugador = 1
@@ -55,7 +65,47 @@ class JuegoMemoria:
             return True
         else:
             return False
-    
+    def turno_maquina(self):
+       print("\nTurno de la máquina...")
+       input("Presione Enter para continuar...")
+        
+        # Primera carta
+       while True:
+            fila1 = random.randint(0, self.tablero.filas - 1)
+            col1 = random.randint(0, self.tablero.columnas - 1)
+            if not self.tablero.esta_revelada(fila1, col1):
+                break
+        
+       self.tablero.revelar_carta(fila1, col1)
+       Start.limpiar_pantalla()
+       self.tablero.mostrar()
+       print(f"\nLa máquina elige la posición [{fila1}, {col1}]")
+       input("\nPresione Enter para continuar...")
+        
+        # Segunda carta
+       while True:
+            fila2 = random.randint(0, self.tablero.filas - 1)
+            col2 = random.randint(0, self.tablero.columnas - 1)
+            if not self.tablero.esta_revelada(fila2, col2) and (fila2 != fila1 or col2 != col1):
+                break
+        
+       self.tablero.revelar_carta(fila2, col2)
+       Start.limpiar_pantalla()
+       self.tablero.mostrar()
+       print(f"\nLa máquina elige la posición [{fila2}, {col2}]")
+        #verificar si las cartas son iguales
+       if self.tablero.son_iguales(fila1,col1,fila2,col2):
+           print("\n¡La máquina encontró un par!")
+           self.pares_encontrados+=1
+           self.jugador2.sumar_puntos()
+           self.jugador2.suma_parejas()
+       else:
+           print("\nLa máquina no encontro un par")
+           input("\nPresione enter para continuar")
+           self.tablero.ocultar_carta(fila1,col1)
+           self.tablero.ocultar_carta(fila2,col2)
+           self.cambiar_turno()
+
     def jugar(self):
         
         """Método principal que ejecuta el bucle del juego.
@@ -64,64 +114,67 @@ class JuegoMemoria:
             Start.limpiar_pantalla()
             self.mostrar_puntuacion()
             self.tablero.mostrar()
-            
+            if self.modo_juego==2 and self.turno_jugador==2:
+                self.turno_maquina()
+            else:#turno jugador
             # Primera carta
-            while True:
-              try:
-                fila1, col1 = Start.pedir_carta("primera")
-                if not self.coordenda_valida(fila1,col1):
+              while True:
+                try:
+                  fila1, col1 = Start.pedir_carta("primera")
+                  if not self.coordenda_valida(fila1,col1):
                     print("\nCoordenada inválida! Por favor, introduce una coordenada dentro del tablero ")
-                elif self.tablero.esta_revelada(fila1,col1):
+                  elif self.tablero.esta_revelada(fila1,col1):
                     print("\n!Esta carta ya está revelada! Elige otra carta") 
-                else:
+                  else:
                     break    
-              except ValueError:
+                except ValueError:
                   print("\n¡Error! Por favor introduce números válidos")
-              except Exception:
+                except Exception:
                   print("\n¡Error! Tecla inválida")
 
-              input("\nPresione Enter para continuar...")
+                input("\nPresione Enter para continuar...")
+                Start.limpiar_pantalla()
+                self.tablero.mostrar()
+
+              self.tablero.revelar_carta(fila1, col1)
               Start.limpiar_pantalla()
               self.tablero.mostrar()
-
-            self.tablero.revelar_carta(fila1, col1)
-            Start.limpiar_pantalla()
-            self.tablero.mostrar()
             
             # Segunda carta
-            while True:
-              try:
-                fila2, col2 = Start.pedir_carta("segunda")
-                if not self.coordenda_valida(fila2,col2):
-                    print("\nCoordenada inválida! Por favor, introduce una coordenada dentro del tablero ")
-                elif self.tablero.esta_revelada(fila2,col2):
-                    print("\n!Esta carta ya está revelada! Elige otra carta") 
-                else:
-                   break
-              except ValueError:
-                   print("\n¡Error! Por favor introduce números válidos")
-              except Exception:
-                   print("\n¡Error! Tecla inválida")
+              while True:
+                try:
+                  fila2, col2 = Start.pedir_carta("segunda")
+                  if not self.coordenda_valida(fila2,col2):
+                      print("\nCoordenada inválida! Por favor, introduce una coordenada dentro del tablero ")
+                  elif self.tablero.esta_revelada(fila2,col2):
+                      print("\n!Esta carta ya está revelada! Elige otra carta") 
+                  else:
+                     break
+                except ValueError:
+                     print("\n¡Error! Por favor introduce números válidos")
+                except Exception:
+                     print("\n¡Error! Tecla inválida")
                    
-              input("\nPresione Enter para continuar...")
+                input("\nPresione Enter para continuar...")
+                Start.limpiar_pantalla()
+                self.tablero.mostrar()
+                  
+              self.tablero.revelar_carta(fila2, col2) 
               Start.limpiar_pantalla()
               self.tablero.mostrar()
-                  
-            self.tablero.revelar_carta(fila2, col2) 
-            Start.limpiar_pantalla()
-            self.tablero.mostrar()
-            #Verificación de las cartas seleccionadas
-            if self.tablero.son_iguales(fila1, col1, fila2, col2):
-                print("\n¡Encontraste un par!")
-                self.pares_encontrados += 1
-                self.jugador_actual().sumar_puntos()
-                self.jugador_actual().suma_parejas()
-            else:
-                print("\nNo son iguales")
-                self.tablero.ocultar_carta(fila1, col1)
-                self.tablero.ocultar_carta(fila2, col2)
-                self.cambiar_turno()
+              #Verificación de las cartas seleccionadas
+              if self.tablero.son_iguales(fila1, col1, fila2, col2):
+                  print("\n¡Encontraste un par!")
+                  self.pares_encontrados += 1
+                  self.jugador_actual().sumar_puntos()
+                  self.jugador_actual().suma_parejas()
+              else:
+                  print("\nNo son iguales")
+                  self.tablero.ocultar_carta(fila1, col1)
+                  self.tablero.ocultar_carta(fila2, col2)
+                  self.cambiar_turno()
+              if self.pares_encontrados < self.total_pares:
             
-            input("\nPresione Enter para continuar...")
+               input("\nPresione Enter para continuar...")
         
         self.mostrar_resultado()
