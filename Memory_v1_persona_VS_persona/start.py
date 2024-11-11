@@ -7,12 +7,13 @@ class Start:
             print("\n----------Bienvenido al Juego de Memoria------------")
             print("\n1.Jugador vs Jugador")
             print("2.Jugador vs Máquina")
-            print("3.Salir")
+            print("3.Máquina vs Máquina")
+            print("4.Salir")
             try:
-                opcion=int(input("\nSelccione una apción(1-2-3):"))
-                if 1<=opcion<=3:
+                opcion=int(input("\nSelccione una apción(1-2-3-4):"))
+                if 1<=opcion<=4:
                     return opcion
-                print("\n¡Error! Seleccione una opción válida(1-2-3):")
+                print("\n¡Error! Seleccione una opción válida(1-2-3-4):")
             except ValueError:
                 print("\n¡Error! Seleccione un número válido")
 

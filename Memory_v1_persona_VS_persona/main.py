@@ -4,7 +4,7 @@ while True:
         Start.limpiar_pantalla()
         opcion = Start.mostrar_menu_principal()
         
-        if opcion == 3:
+        if opcion == 4:
             print("\n¡Gracias por jugar!")
             break
         

@@ -14,10 +14,14 @@ class JuegoMemoria:
             nombre1,nombre2=Start.obtener_nombres()
             self.jugador1 = Jugador(1,nombre1)
             self.jugador2 = Jugador(2,nombre2)
-        else: #jugador vs máquina
+        elif self.modo_juego==2: #jugador vs máquina
             nombre=Start.obtener_nombre_jugador()
             self.jugador1=Jugador(1,nombre)
             self.jugador2=Jugador(2,"Máquina")
+        else:#maquina vs maquina
+            self.jugador1=Jugador(1,"Máquina1")
+            self.jugador2=Jugador(2,"Máquina2")
+
 
 
         self.total_pares = (filas * columnas) // 2
@@ -65,9 +69,10 @@ class JuegoMemoria:
             return True
         else:
             return False
-    '''Método que '''    
+    '''Método que simula el turno de la máquina'''    
     def turno_maquina(self):
-       print("\nTurno de la máquina...")
+       jugador_actual= self.jugador_actual()
+       print(f"\nTurno de {jugador_actual.obtener_nombre()}")
        input("Presione Enter para continuar...")
         
         # Primera carta
@@ -80,7 +85,7 @@ class JuegoMemoria:
        self.tablero.revelar_carta(fila1, col1)
        Start.limpiar_pantalla()
        self.tablero.mostrar()
-       print(f"\nLa máquina elige la posición [{fila1+1}, {col1+1}]")
+       print(f"\n {jugador_actual.obtener_nombre()} elige la posición [{fila1+1}, {col1+1}]")
        input("\nPresione Enter para continuar...")
         
         # Segunda carta
@@ -93,16 +98,16 @@ class JuegoMemoria:
        self.tablero.revelar_carta(fila2, col2)
        Start.limpiar_pantalla()
        self.tablero.mostrar()
-       print(f"\nLa máquina elige la posición [{fila2+1}, {col2+1}]")
+       print(f"\n{jugador_actual.obtener_nombre()} elige la posición [{fila2+1}, {col2+1}]")
        input("\nPresione Enter para continuar...")
         #verificar si las cartas son iguales
        if self.tablero.son_iguales(fila1,col1,fila2,col2):
-           print("\n¡La máquina encontró un par!")
+           print(f"\n {jugador_actual.obtener_nombre()} encontro un par")
            self.pares_encontrados+=1
            self.jugador2.sumar_puntos()
            self.jugador2.suma_parejas()
        else:
-           print("\nLa máquina no encontro un par")
+           print(f"\n {jugador_actual.obtener_nombre()} no encontro un par")
            input("\nPresione enter para continuar")
            self.tablero.ocultar_carta(fila1,col1)
            self.tablero.ocultar_carta(fila2,col2)
@@ -116,7 +121,7 @@ class JuegoMemoria:
             Start.limpiar_pantalla()
             self.mostrar_puntuacion()
             self.tablero.mostrar()
-            if self.modo_juego==2 and self.turno_jugador==2:
+            if self.modo_juego == 3 or (self.modo_juego == 2 and self.turno_jugador == 2):
                 self.turno_maquina()
             else:#turno jugador
             # Primera carta
