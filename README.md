@@ -1,29 +1,108 @@
-# MEMORY 🎴
+# 🎮 Juego de Memoria en Python
 
-<p><strong>JUEGO "MEMORY" CON PYTHON</strong></p>
-<p>El Memory, también conocido como "Concentration" o "Parejas", es un clásico juego de cartas diseñado para poner a prueba la memoria visual y la capacidad de concentración de los jugadores. El objetivo del juego es econtrar todas las parejas de cartas que coincidan entre sí, en el menor número de intentos posible.</p>
-<p><strong>¿Cómo se juega?</strong> El juego comienza con un conjunto de cartas colocadas boca abajo en una cuadrícula. Cada carta tiene una pareja idéntica, pero su ubicación es desconocida para los jugadores.En cada turno, el jugador selecciona dos cartas para voltearlas. Si las cartas son
-iguales, el jugador las retira del tablero y puede seguir jugando. Si las cartas no coinciden,
-se vuelven a colocar boca abajo y pasa el turno al siguiente jugador. El proceso se repite
-hasta que se descubren todas las parejas.</p>
-<p>Modos de juego: Aunque tradicionalmente el juego se juega entre dos o más personas, en
-esta implementación se incluyen más modalidades:</p>
-<p>1.<strong>Persona vs Persona:</strong>  Dos jugadores compiten por encontrar el mayor número de
-parejas. Alternan turnos y el ganador es quien descubra más parejas.</p>
-<p>2.<strong>Persona vs Máquina:</strong>  Un jugador humano compite contra una máquina. La máquina
-simula una inteligencia artificial básica, recordando las cartas que ha visto para
-maximizar sus posibilidades de éxito.</p>
-<p>2. <strong>Persona vs Máquina:</strong> Un jugador humano compite contra una máquina. La máquina
-simula una inteligencia artificial básica, recordando las cartas que ha visto para
-maximizar sus posibilidades de éxito.</p>
-<p><strong>Tablero variable:</strong>El tablero del juego puede ajustarse en tamaño, con un máximo de 6x5
-cartas. Esto permite diferentes grados de dificultad, adaptándose al nivel de experiencia de
-los jugadores.</p>
-<p><strong>Objetivo de la práctica:</strong>Este proyecto no solo refuerza habilidades de programación, como
-la creación de bucles, el uso de listas y diccionarios, y la gestión de flujos condicionales, sino
-que también pone a prueba la capacidad de los estudiantes para implementar lógica de
-juego y diseñar una interfaz funcional y clara. Los alumnos desarrollarán una versión
-funcional del juego por etapas.</p>
-<p>Algunos métodos del juego:</p>
+Un juego de memoria interactivo implementado en Python, donde los jugadores deben encontrar pares de cartas coincidentes. El juego soporta múltiples modos de juego y utiliza emojis como símbolos para las cartas.
 
+## 📝 Descripción
+
+Este juego de memoria es una implementación en consola que permite a los jugadores encontrar pares de cartas coincidentes en un tablero personalizable. El juego incluye tres modos diferentes de juego y utiliza emojis para hacer la experiencia más visual y entretenida.
+
+## 🎯 Características
+
+- **Múltiples Modos de Juego:**
+  - 👥 Jugador vs Jugador
+  - 🤖 Jugador vs Máquina
+  - 🤖 Máquina vs Máquina
+
+- **Tablero Personalizable:**
+  - Tamaño mínimo: 2x2
+  - Tamaño máximo: 6x5
+  - Validación automática para asegurar un número par de casillas
+
+- **Características del Juego:**
+  - Sistema de puntuación
+  - Seguimiento de parejas encontradas
+  - Interfaz visual con emojis
+  - Sistema de turnos
+  - Validación de movimientos
+
+
+
+## 🚀 Instalación
+
+1. Clona el repositorio:
+```bash
+git clone https://github.com/[mayrabpi]/juego-memoria-python.git
+```
+
+2. Navega al directorio del proyecto:
+```bash
+cd juego-memoria-python
+```
+
+3. Ejecuta el juego:
+```bash
+python main.py
+```
+
+## 🎮 Cómo Jugar
+
+1. Al iniciar el juego, selecciona uno de los tres modos de juego disponibles.
+2. Configura el tamaño del tablero (entre 2x2 y 6x5).
+3. En tu turno:
+   - Selecciona la primera carta ingresando sus coordenadas (fila y columna)
+   - Selecciona la segunda carta de la misma manera
+   - Si las cartas coinciden, ¡obtienes un punto!
+   - Si no coinciden, las cartas se voltean y pasa el turno
+4. El juego continúa hasta que se encuentran todos los pares.
+
+## 🏗️ Estructura del Proyecto
+
+```
+juego-memoria/
+│
+├── main.py                 # Archivo principal del juego
+├── README.md              # Documentación del proyecto
+│
+└── classes/               # Módulos del juego
+    ├── jugador.py        # Clase base para los jugadores
+    ├── jugador_maquina.py # Implementación de la IA
+    ├── tablero.py        # Lógica del tablero de juego
+    └── juego_memoria.py  # Controlador principal del juego
+```
+
+## 🤖 Implementación de la IA
+
+Modo juega la máquina:
+
+ 1. **Modo Simple:**
+   - Selección aleatoria de cartas
+   - No mantiene memoria de jugadas anteriores
+   - Ideal para jugadores principiantes
+
+## 🛠️ Requisitos Técnicos
+
+- Python 3.6 o superior
+- Sistema operativo compatible (Windows/Linux/MacOS)
+- Terminal que soporte emojis UTF-8
+
+## 📈 Futuras Mejoras
+- [ ] Jugo Modo con memoria de la máquina
+- [ ] Más modos de juego
+- [ ] Sistema de niveles de dificultad
+- [ ] Guardar puntuaciones máximas
+- [ ] Modo multijugador en red
+- [ ] Temas personalizables
+
+
+## 👥 Autor
+
+[Mayra]
+- GitHub: [https://github.com/mayrabpi](https://github.com/tu-usuario)
+- LinkedIn: [https://www.linkedin.com/in/mayrabpi/](https://linkedin.com/in/tu-perfil)
+
+## 🙏 Agradecimientos
+
+- A la comunidad de Python por las herramientas y recursos
+- A todos los que han contribuido con sugerencias y mejoras
+- A los testers que han ayudado a mejorar el juego
 
